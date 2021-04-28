@@ -10,6 +10,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Token;
+use App\Models\Guest;
 
 class EveryoneEvent implements ShouldBroadcast
 {
@@ -61,8 +62,10 @@ class EveryoneEvent implements ShouldBroadcast
      */
     public function broadcastWith()
     {
+        $guests = Guest::paginate(15);
+        $json_decode = json_encode($guests);
         return [
-            'message' => 'hello'
+            'message' => $json_decode
         ];
     }
 }

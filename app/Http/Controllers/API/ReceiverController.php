@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Models\Token;
+use App\Models\Guest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -10,12 +10,18 @@ class ReceiverController extends Controller
 {
     public function get(Request $request)
     {
-        $tokens = Token::with(['pages'])->get();
+        $length = $request->input('length');
+        $sortBy = $request->input('column');
+        $orderBy = $request->input('dir');
+        $searchValue = $request->input('search');
 
-        if ($tokens) {
-            return ResponseFormatter::success($tokens, 'Data berhasil diambil');
+        // $query = Guest::with($sortBy, $orderBy, $searchValue);
+
+        $data = Guest::paginate($length);
+        if ($data) {
+            return ResponseFormatter::success($data, 'Data berhasil diambil');
         } else {
-            return ResponseFormatter::error($tokens, 'Data error diambil');
+            return ResponseFormatter::error($data, 'Data error diambil');
         }
     }
 }

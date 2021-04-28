@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/testing', [App\Http\Controllers\TestingController::class,'index']);
+Route::get('/testing', [App\Http\Controllers\TokenDashboardController::class,'index']);
 Route::prefix('admin')->group(function () {
     // Dashboard Page
     Route::get('/',[App\Http\Controllers\Admin\DashboardController::class,'index']);
@@ -47,4 +47,4 @@ Route::get('/receiver', [App\Http\Controllers\ReceiveController::class,'index'])
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::post('/sendtoken',[App\Http\Controllers\TestingController::class,'sendtoken']);
+Route::post('/sendtoken',[App\Http\Controllers\TokenDashboardController::class,'sendtoken']);

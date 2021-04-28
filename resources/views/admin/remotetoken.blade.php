@@ -17,10 +17,10 @@
         <td>{{ $token->name }}</td>
         <td>
             <a href="{{ url('/send') }}" class="btn btn-xs btn-primary d-inline">
-                Example Page 1
+                Jumlah Admin
             </a>
             <a href="{{ url('/page1') }}" class="btn btn-xs btn-primary d-inline">
-                Example Page 2
+                Jumlah Pengguna
             </a>
         </td>
     </tr>

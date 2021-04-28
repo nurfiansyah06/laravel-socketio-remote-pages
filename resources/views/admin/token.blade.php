@@ -11,8 +11,8 @@
   <div class="form-group">
     <label for="exampleFormControlSelect1">Pilih Halaman</label>
     <select class="form-control" name="page" id="exampleFormControlSelect1">
-      <option value="/admin/page1">Example Page 1</option>
-      <option value="/admin/page2">Example Page 2</option>
+      <option value="/admin/page1">Jumlah Admin</option>
+      <option value="/admin/page2">Jumlah Pengguna</option>
     </select>
   </div>
 

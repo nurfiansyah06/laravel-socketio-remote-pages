@@ -10,7 +10,9 @@ window.Vue = require("vue").default;
 import Vue from "vue";
 import VueRouter from "vue-router";
 import router from "./routes";
+import DataTable from "laravel-vue-datatable";
 
+Vue.use(DataTable);
 Vue.use(VueRouter);
 
 /**
@@ -29,7 +31,6 @@ Vue.component(
     require("./components/ExampleComponent.vue").default
 );
 
-Vue.component("tes-tes", require("./components/Tes.vue").default);
 Vue.component("first-page", require("./components/FirstPage.vue").default);
 
 /**
