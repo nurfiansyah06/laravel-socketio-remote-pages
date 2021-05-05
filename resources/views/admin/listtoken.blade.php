@@ -8,7 +8,6 @@
       <th scope="col">#</th>
       <th scope="col">Nama</th>
       <th scope="col">Token</th>
-      <th scope="col">Halaman Awal</th>
       <th scope="col">Aksi</th>
     </tr>
   </thead>
@@ -18,7 +17,6 @@
         <th scope="row">{{ $loop->iteration }}</th>
         <td>{{ $token->name }}</td>
         <td>{{ $token->token }}</td>
-        <td>{{ $token->pages->url_page }}</td>
         <td>
            <form action="{{ url('admin/token/deletetoken',$token->id) }}" method="post">
                 @csrf

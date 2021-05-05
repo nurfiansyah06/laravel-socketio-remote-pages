@@ -9,10 +9,11 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use App\Models\Token;
 use App\Models\Guest;
 
-class EveryoneEvent implements ShouldBroadcast
+class GuestEvent implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -47,12 +48,12 @@ class EveryoneEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('EveryoneChannel');
+        return new Channel('GuestChannel');
     }
 
      public function broadcastAs()
     {
-        return 'EveryoneMessage';
+        return 'GuestMessage';
     }
 
     /*
@@ -62,10 +63,12 @@ class EveryoneEvent implements ShouldBroadcast
      */
     public function broadcastWith()
     {
-        $guests = Guest::paginate(15);
-        $json_decode = json_encode($guests);
-        return [
-            'message' => $json_decode
-        ];
+        $guests = Guest::all();
+        $guest_decode = json_decode($guests, true);
+        foreach ($guest_decode as $key => $value) {
+            return [
+                'message' => json_encode($value['name'])
+            ];
+        }
     }
 }

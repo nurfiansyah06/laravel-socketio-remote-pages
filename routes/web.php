@@ -30,21 +30,28 @@ Route::prefix('admin')->group(function () {
     // Remote Page
     Route::get('/listtoken',[App\Http\Controllers\Admin\RemoteController::class,'index']);
     Route::get('/remotetoken',[App\Http\Controllers\Admin\RemoteController::class,'remotePage']);
+
+    //list guest
+    Route::get('/page2',[App\Http\Controllers\Admin\TokenController::class, 'listGuest']);
 });
 
-Route::get('/send', function () {
-    broadcast(new App\Events\EveryoneEvent());
+Route::get('/page-tamu/{token}', function () {
+    broadcast(new App\Events\GuestEvent());
     return redirect()->back();
 });
 
-Route::get('/page1', function() {
-    broadcast(new App\Events\FirstPageEvent());
+Route::get('/page-admin/{token}', function() {
+    broadcast(new App\Events\AdminEvent());
     return redirect()->back();
 });
 
-Route::get('/receiver', [App\Http\Controllers\ReceiveController::class,'index']);
+// Route::get('/receiver', [App\Http\Controllers\Admin\TokenController::class, 'listGuest']);
+Route::get('/receiver/{token}',[App\Http\Controllers\Admin\TokenController::class,'receiverByToken']);
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/sendtoken',[App\Http\Controllers\TokenDashboardController::class,'sendtoken']);
+Route::get('/layout', function () {
+    return view('layout');
+});

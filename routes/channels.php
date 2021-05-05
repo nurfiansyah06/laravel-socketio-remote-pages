@@ -17,10 +17,10 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
 
-Broadcast::channel('EveryoneChannel', function () {
+Broadcast::channel('GuestChannel', function () {
     return true;
 });
 
-Broadcast::channel('FirstPageChannel', function() {
+Broadcast::channel('AdminChannel', function() {
     return true;
 });

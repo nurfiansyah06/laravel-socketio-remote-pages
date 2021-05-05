@@ -16,11 +16,11 @@
         <th scope="row">{{ $loop->iteration }}</th>
         <td>{{ $token->name }}</td>
         <td>
-            <a href="{{ url('/send') }}" class="btn btn-xs btn-primary d-inline">
-                Jumlah Admin
+            <a href="{{ url('/page-tamu/'. $token->token) }}" class="btn btn-xs btn-primary d-inline">
+                Jumlah Tamu
             </a>
-            <a href="{{ url('/page1') }}" class="btn btn-xs btn-primary d-inline">
-                Jumlah Pengguna
+            <a href="{{ url('/page-admin/'. $token->token) }}" class="btn btn-xs btn-primary d-inline">
+                Jumlah Admin
             </a>
         </td>
     </tr>

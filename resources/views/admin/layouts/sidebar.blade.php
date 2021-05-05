@@ -27,16 +27,6 @@
                 </a>
             </li>
             @endauth
-            <li>
-                <a href="{{ url('/admin/page1') }}">
-                    <i class="fa fa-table"></i> <span>Jumlah Admin</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ url('/admin/page2') }}">
-                    <i class="fa fa-table"></i> <span>Jumlah Pengguna</span>
-                </a>
-            </li>
         </ul>
     </section>
     <!-- /.sidebar -->

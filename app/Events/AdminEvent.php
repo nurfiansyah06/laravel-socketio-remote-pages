@@ -7,10 +7,12 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use App\Models\User;
 
-class FirstPageEvent implements ShouldBroadcast
+class AdminEvent implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -51,12 +53,12 @@ class FirstPageEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('FirstPageChannel');
+        return new Channel('AdminChannel');
     }
 
      public function broadcastAs()
     {
-        return 'FirstPage';
+        return 'AdminPage';
     }
 
     /*
@@ -66,6 +68,8 @@ class FirstPageEvent implements ShouldBroadcast
      */
     public function broadcastWith()
     {
+        $admin = User::all();
+
         return [
             'message' => 'tes'
         ];

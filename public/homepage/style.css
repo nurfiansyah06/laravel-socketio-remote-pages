@@ -1,0 +1,16 @@
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+.card {
+    margin-top: 75px;
+    border-radius: 18px;
+}
+
+.navlink-navbar {
+    color: #fff !important;
+}
+
+.title-card {
+    margin-top: 30px;
+}

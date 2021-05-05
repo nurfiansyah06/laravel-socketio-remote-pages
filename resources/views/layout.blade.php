@@ -56,10 +56,9 @@
             <div id="table-data"></div>
         </div>
     </section>
-    <script src="{{ asset('js/app.js') }}"></script>
     <script>
-         Echo.channel('AdminChannel')
-        .listen('.AdminPage', function (e) {
+         Echo.channel('EveryoneChannel')
+        .listen('.EveryoneMessage', function (e) {
             const data = e.message
             $('#table-data').html(
                 `<h1>List Admin</h1>
@@ -80,8 +79,8 @@
             )
         })
 
-    Echo.channel('GuestChannel')
-        .listen('.GuestMessage', function (e) {
+    Echo.channel('FirstPageChannel')
+        .listen('.FirstPage', function (e) {
             const data = e.message
             $('#table-data').html(
                 `<h1>List Tamu</h1>
@@ -90,7 +89,6 @@
                         <tr>
                             <th scope='col'>#</th>
                             <th scope='col'>Nama</th>
-                            <th scope='col'>Alamat</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -98,7 +96,6 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $guest->name }}</td>
-                            <td>{{ $guest->address }}</td>
                         </tr>
                         @endforeach
                     </tbody>

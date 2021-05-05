@@ -9,27 +9,38 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<link rel="stylesheet" href="{{ asset('homepage/style.css') }}">
 
-    <title>Hello, world!</title>
+    <!-- FONT POPPINS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>KOMINFO PEMALANG</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    @include('sweetalert::alert')
+    <!-- START NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="#">
+                <img src="{{ asset('images/pemalang.png') }}" style="max-width: 75px" alt="">
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
                 <div class="navbar-nav ml-auto">
-                    <a class="nav-link" href="{{ url('/login') }}">Login</a>
+                    <a class="nav-link navlink-navbar mr-5" href="{{ url('/') }}">Home</a>
+                    <a class="nav-link navlink-navbar" href="{{ url('/login') }}">Login as Admin</a>
                 </div>
             </div>
         </div>
     </nav>
+    <!-- END OF NAVBAR -->
 
     <div class="container mt-5">
+        <h1>Token Halaman</h1>
         <form action="{{ url('sendtoken') }}" method="POST">
             @csrf
             <div class="form-group">

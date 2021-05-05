@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Token;
 use App\Models\Page;
 use Illuminate\Support\Str;
+use App\Models\Guest;
 
 class TokenController extends Controller
 {
@@ -26,12 +27,6 @@ class TokenController extends Controller
 
         $token->save();
 
-        // insert data url page to page's table
-        $page = new Page;
-
-        $page->url_page = $request->page;
-        $token->pages()->save($page);
-
         return redirect('/admin/listtoken');
     }
 
@@ -44,5 +39,25 @@ class TokenController extends Controller
 
         return redirect('admin/listtoken');
 
+    }
+
+     public function listGuest()
+    {
+        $guests = Guest::all();
+
+        return view('receiver',[
+            'guests' => $guests
+        ]);
+    }
+
+    public function receiverByToken($token)
+    {
+        $token = Token::find($token);
+        $guests = Guest::all();
+        // dd($token);
+        return view('receiver',[
+            'token' => $token,
+            'guests' => $guests
+        ]);
     }
 }

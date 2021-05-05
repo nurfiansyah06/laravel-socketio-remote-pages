@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Token;
 use App\Models\Guest;
+Use Alert;
 
 class TokenDashboardController extends Controller
 {
@@ -13,16 +14,20 @@ class TokenDashboardController extends Controller
         return view('test');
     }
 
-    public function sendtoken(Request $request)
+    public function sendtoken(Request $request, Token $token)
     {
-        // get data from token's table
-        $token = Token::get();
+        try {
+            // get data from token's table
+        $token = Token::where('token','like',"%".$request->token."%")->get();
 
         // looping the data to get token
         foreach ($token as $key ) {
             if ($request->token == $key->token) {
-                return redirect($key->pages->url_page);
+                return redirect('receiver/' . $key->token);
             }
+        }
+        } catch (\Throwable $th) {
+            throw $th;
         }
     }
 
@@ -34,4 +39,6 @@ class TokenDashboardController extends Controller
             'guests' => $guests
         ]);
     }
+
+
 }

@@ -1964,36 +1964,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      data: tablePengguna()
+      data: null
     };
   },
-  methods: {
-    tablePengguna: function tablePengguna() {
-      Echo.channel("EveryoneChannel").listen(".EveryoneMessage", function (e) {
-        console.log(e);
-      });
-    }
+  mounted: function mounted() {
+    this.$echo.channel("FirstPageChannel").listen("FirstPage", function (data) {
+      console.log(data.message);
+    });
   }
 });
 
@@ -65742,42 +65722,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "first-page" } }, [
     _c("div", { staticClass: "row" }, [
-      _c("table", { staticClass: "table table-striped table-dark" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.data.data.data.data, function(item, index) {
-            return _c("tr", { key: item.id }, [
-              _c("td", [_vm._v(_vm._s(index + 1))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(item.name))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(item.address))])
-            ])
-          }),
-          0
-        )
-      ])
+      _vm._v("\n        " + _vm._s(_vm.data) + "\n    ")
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Alamat")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
